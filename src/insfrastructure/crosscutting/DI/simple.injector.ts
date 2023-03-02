@@ -21,11 +21,11 @@ const referenceDataIoCModule = new ContainerModule((bind) => {
     registerController(bind, RestaurantController);
 
     /* Restaurants --------------------------------------------------------------- */
-    bind<IRestauranteService<Restaurant>>(TYPES.IRestauranteService)
-        .to(RestaurantService).inSingletonScope();
+    // bind<IRestauranteService<Restaurant>>(TYPES.IRestauranteService)
+    //     .to(RestaurantService).inSingletonScope();
 
-    bind<IRestaurant>(TYPES.IRestaurant)
-        .to(Restaurant).inSingletonScope();
+    // bind<IRestaurant>(TYPES.IRestaurant)
+    //     .to(Restaurant).inSingletonScope();
 
     /* DbContext --------------------------------------------------------------- */
     bind<IDbContext<BaseDomain>>(TYPES.IDbContext)
@@ -38,8 +38,8 @@ const referenceDataIoCModule = new ContainerModule((bind) => {
     bind<BaseDomain>(TYPES.BaseDomain)
         .to(BaseDomain).inSingletonScope();
 
-    bind<IBaseRepository<BaseDomain>>(TYPES.IBaseRepository)
-        .to(BaseRepository).inSingletonScope();
+    // bind<IBaseRepository<BaseDomain>>(TYPES.IBaseRepository)
+    //     .to(BaseRepository).inSingletonScope();
 });
 
 export { referenceDataIoCModule };

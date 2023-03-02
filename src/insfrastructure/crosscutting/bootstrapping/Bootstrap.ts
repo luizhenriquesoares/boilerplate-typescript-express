@@ -1,44 +1,42 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import * as chalk from 'chalk';
 
 import { Container, ContainerModule } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { reqMiddleware, exceptionLoggerMiddleware } from '../middlewares/http.middleware';
 import { TYPES } from '../DI/types';
 
+
 export async function bootstrap(
     container: Container,
     appPort: number,
-    dbHost?: string,
-    dbName?: string,
     ...modules: ContainerModule[]
 ) {
     if (container.isBound(TYPES.App) === false) {
-        container.load(...modules);
-
+      let x = new Container();
+        // x.load(...modules);
         // configure express
-        const server = new InversifyExpressServer(container);
+        const server = new InversifyExpressServer(x);
 
-        // tslint:disable-next-line:no-shadowed-variable
         server.setConfig((app) => {
 
             // Configure requests body parsing
             app.use(bodyParser.urlencoded({ extended: true }));
             app.use(bodyParser.json());
             // Log all requets that hit the server
-            // app.use(reqMiddleware);
+            app.use(reqMiddleware);
         });
 
-        // tslint:disable-next-line:no-shadowed-variable
-        // server.setErrorConfig((app) => {
-        //     // Catch and log all exceptions
-        //     app.use(exceptionLoggerMiddleware);
-        // });
+        server.setErrorConfig((app) => {
+            // Catch and log all exceptions
+            app.use(exceptionLoggerMiddleware);
+        });
 
         const app = server.build();
 
         // Run express server
-        console.log(`Application listening on port ${appPort}...`);
+        console.log('%s Express server listening on port %d in %s mode.', chalk.default.bgGreen('✓'), appPort, app.get('env'));
         app.listen(appPort);
 
         container.bind<express.Application>(TYPES.App).toConstantValue(app);

@@ -7,12 +7,12 @@ import { IDbContext } from '../insfrastructure/repositories/Interfaces/db.contex
 import { BaseRepository, DbContext } from '../insfrastructure/crosscutting/DI/decorators';
 import IBaseService from './interfaces/base.service.interface';
 @injectable()
-export class BaseService<T extends Typegoose> extends BaseRepository implements IBaseService<T>{
-
-    protected _MODEL: ModelType<T>;
+export class BaseService<T extends Typegoose> {
+//extends BaseRepository implements IBaseService<T>
+    protected model: ModelType<T>;
 
     constructor(@DbContext protected _DbContext: IDbContext<T>) {
-        super();
+        //super();
         console.log('============ BASE SERVICE ===============');
         this._DbContext = _DbContext;
     }
@@ -34,4 +34,5 @@ export class BaseService<T extends Typegoose> extends BaseRepository implements 
     deleteAsync(id: bigint): Promise<T> {
         throw new Error('Method not implemented.');
     }
+
 }

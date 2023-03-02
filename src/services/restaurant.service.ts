@@ -13,7 +13,7 @@ export class RestaurantService extends BaseService<Restaurant> implements IResta
 
     constructor(@RestaurantDomain private readonly domain: ModelType<Restaurant>, @DbContext protected _DbContext: IDbContext<Restaurant>) {
         super(_DbContext);
-        this._MODEL = domain.model();
+        this.model = domain.model();
         console.log('============== CONSTRUCTOR RESTAURANTE SERVICE =====================');
     }
     public async getRestaurant() {
