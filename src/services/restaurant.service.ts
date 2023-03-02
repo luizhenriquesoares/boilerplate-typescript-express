@@ -10,14 +10,15 @@ import { BaseDomain } from '../domains/base.domain';
 
 @injectable()
 export class RestaurantService extends BaseService<Restaurant> implements IRestauranteService<BaseDomain> {
-
-    constructor(@RestaurantDomain private readonly domain: ModelType<Restaurant>, @DbContext protected _DbContext: IDbContext<Restaurant>) {
-        super(_DbContext);
-        this.model = domain.model();
-        console.log('============== CONSTRUCTOR RESTAURANTE SERVICE =====================');
-    }
-    public async getRestaurant() {
-        throw new Error('Method not implemented.');
-    }
-
+  constructor(
+    @RestaurantDomain private readonly domain: ModelType<Restaurant>,
+    @DbContext protected _DbContext: IDbContext<Restaurant>,
+  ) {
+    super(_DbContext);
+    this.model = domain.model();
+    console.log('============== CONSTRUCTOR RESTAURANTE SERVICE =====================');
+  }
+  public async get() {
+    throw new Error('Method not implemented.');
+  }
 }

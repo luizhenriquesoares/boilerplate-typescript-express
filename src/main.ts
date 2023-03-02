@@ -16,18 +16,12 @@ const port: number = parseInt(process.env.PORT, 0);
 
 /* bootstrap ---------------------------------------------------------------- */
 async function runApp() {
-    const app = await bootstrap(
-        container,
-        port,
-        null,
-        null,
-        referenceDataIoCModule,
-    );
-    return app;
+  const app = await bootstrap(container, port, null, null, referenceDataIoCModule);
+  return app;
 }
 
 (async () => {
-    await runApp();
+  await runApp();
 })();
 
 export { runApp };

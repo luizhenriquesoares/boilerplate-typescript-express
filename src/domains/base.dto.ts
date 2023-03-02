@@ -1,3 +1,3 @@
 export abstract class BaseDto {
-    public readonly id: bigint | string;
+  public readonly id: bigint | string;
 }

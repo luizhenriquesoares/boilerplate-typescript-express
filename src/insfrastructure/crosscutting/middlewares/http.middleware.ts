@@ -1,19 +1,18 @@
 import * as express from 'express';
 
 export function reqMiddleware(req: express.Request, res: express.Response, next: () => void) {
-    console.log(`
+  console.log(`
     ----------------------------------
     REQUEST MIDDLEWARE
     HTTP ${req.method} ${req.url}
     ----------------------------------
     `);
-    next();
+  next();
 }
 
 export function exceptionLoggerMiddleware(error: Error, req: express.Request, res: express.Response, next: () => void) {
-
-    // Log exception
-    console.error(`
+  // Log exception
+  console.error(`
     ----------------------------------
     EXCEPTION MIDDLEWARE
     HTTP ${req.method} ${req.url}
@@ -22,8 +21,7 @@ export function exceptionLoggerMiddleware(error: Error, req: express.Request, re
     ----------------------------------
     `);
 
-    // Hide stack from client for security reasons
-    const e = { error: 'Internal server error' };
-    res.status(500).json(e);
-
+  // Hide stack from client for security reasons
+  const e = { error: 'Internal server error' };
+  res.status(500).json(e);
 }
