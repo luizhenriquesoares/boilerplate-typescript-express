@@ -11,7 +11,6 @@ export async function bootstrap(
     appPort: number,
     dbHost?: string,
     dbName?: string,
-    // tslint:disable-next-line:trailing-comma
     ...modules: ContainerModule[]
 ) {
     if (container.isBound(TYPES.App) === false) {

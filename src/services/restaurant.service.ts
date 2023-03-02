@@ -16,7 +16,7 @@ export class RestaurantService extends BaseService<Restaurant> implements IResta
         this._MODEL = domain.model();
         console.log('============== CONSTRUCTOR RESTAURANTE SERVICE =====================');
     }
-    public async getRestaurants() {
+    public async getRestaurant() {
         throw new Error('Method not implemented.');
     }
 

@@ -1,13 +1,13 @@
-import { BaseDomain } from '../../../Domains/BaseDomain';
+import { BaseDomain } from '../../../domains/base.domain';
 import { BaseDto } from '../../../domains/base.dto';
 
 export abstract class Mapping<T extends BaseDomain | BaseDto> {
-    public _MAPPER: AutoMapperJs.AutoMapper;
+    public readonly mapper: AutoMapperJs.AutoMapper;
 
     public async map<TDomain>(obj: BaseDomain): Promise<TDomain> {
-        const _SOURCEKEY = '';
-        const _DESTINATIONKEY = '';
+        const sourceKey = '';
+        const destinationKey = '';
 
-        return this._MAPPER.map(_SOURCEKEY, _DESTINATIONKEY, obj);
+        return this.mapper.map(sourceKey, destinationKey, obj);
     }
 }

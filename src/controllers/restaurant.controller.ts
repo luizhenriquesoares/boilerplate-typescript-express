@@ -15,9 +15,10 @@ export class RestaurantController  {
     }
 
     @httpGet('/')
-   public getRestaurants(req: Request, res: Response) {
+   public async getRestaurant(req: Request, res: Response) {
         try {
-            res.status(200).json(this.restaurantService.getRestaurants());
+            const response = await this.restaurantService.getRestaurant();
+            res.status(200).json(response);
         } catch (error) {
             console.log(error);
         }

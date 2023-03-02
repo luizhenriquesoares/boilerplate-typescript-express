@@ -3,7 +3,7 @@ import { injectable, decorate } from 'inversify';
 import { SchemaOptions } from 'mongoose';
 
 decorate(injectable(), Typegoose);
-// @injectable()
+@injectable()
 export class BaseDomain extends Typegoose  {
     public readonly id: bigint | string;
 }

@@ -6,23 +6,23 @@ import { Restaurant } from '../../../domains/restaurant/restaurant';
 
 @injectable()
 export class RestaurantDtoMappingToDomain extends Mapping<Restaurant> {
-    public _MAPPER: AutoMapperJs.AutoMapper;
+  public readonly mapper: AutoMapperJs.AutoMapper;
 
     constructor() {
         super();
-        this._MAPPER = automapper;
+        this.mapper = automapper;
         this.createProfile();
     }
 
     public async map<T>(obj: Restaurant): Promise<T> {
-        const _SOURCEKEY = 'RestaurantDto';
-        const _DESTINATIONKEY = 'Restaurant';
+        const sourceKey = 'RestaurantDto';
+        const destinationKey = 'Restaurant';
 
-        return this._MAPPER.map(_SOURCEKEY, _DESTINATIONKEY, obj);
+        return this.mapper.map(sourceKey, destinationKey, obj);
     }
 
     private createProfile(): void {
-        this._MAPPER.initialize(RestaurantDtoMappingToDomain.Config);
+        this.mapper.initialize(RestaurantDtoMappingToDomain.Config);
     }
 
     public static Config(config: AutoMapperJs.IConfiguration): void {

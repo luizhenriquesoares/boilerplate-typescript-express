@@ -1,5 +1,5 @@
 import { prop, ModelType, Typegoose } from 'typegoose';
-import { BaseDomain, schemaOptions  } from '../../Domains/BaseDomain';
+import { schemaOptions } from '../base.domain';
 
 export class Restaurant extends Typegoose  {
     @prop({required: [true, 'Username is required'], unique: true})
