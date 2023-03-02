@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   apipedido:
-    image: desafio-node-typescript
+    image: boilerplate-node-typescript
     build: .
     environment:
       NODE_ENV: production

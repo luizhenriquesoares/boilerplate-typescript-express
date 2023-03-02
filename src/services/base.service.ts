@@ -1,18 +1,14 @@
 import { injectable } from 'inversify';
 
 import 'reflect-metadata';
-import { ModelType, Typegoose } from 'typegoose';
 import { IDbContext } from '../insfrastructure/repositories/Interfaces/db.context.interface';
-
-import { BaseRepository, DbContext } from '../insfrastructure/crosscutting/DI/decorators';
+import { DbContext } from '../insfrastructure/crosscutting/DI/decorators';
 import IBaseService from './interfaces/base.service.interface';
 @injectable()
-export class BaseService<T extends Typegoose> {
-  //extends BaseRepository implements IBaseService<T>
-  protected model: ModelType<T>;
+export class BaseService<T> implements IBaseService<T> {
+  protected model;
 
   constructor(@DbContext protected _DbContext: IDbContext<T>) {
-    //super();
     console.log('============ BASE SERVICE ===============');
     this._DbContext = _DbContext;
   }

@@ -1,13 +1,13 @@
-export default interface IBaseService<TDomain> {
-  findAllAsync(): Promise<TDomain>;
+export default interface IBaseService<T> {
+  findAllAsync(): Promise<T>;
 
   findOneAsync();
 
-  findByIdAsync(id: bigint | string): Promise<TDomain>;
+  findByIdAsync(id: bigint | string): Promise<T>;
 
-  createAsync(obj: TDomain): Promise<TDomain>;
+  createAsync(obj: T): Promise<T>;
 
-  updateAsync(obj: TDomain): Promise<TDomain>;
+  updateAsync(obj: T): Promise<T>;
 
-  deleteAsync(id: bigint): Promise<TDomain>;
+  deleteAsync(id: bigint): Promise<T>;
 }

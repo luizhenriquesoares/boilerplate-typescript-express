@@ -1,12 +1,12 @@
-import { prop, ModelType, Typegoose } from 'typegoose';
-import { schemaOptions } from '../base.domain';
+import { prop, getModelForClass } from '@typegoose/typegoose';
 
-export class Restaurant extends Typegoose {
+export class Restaurant {
   @prop({ required: [true, 'Username is required'], unique: true })
   readonly name: string;
+  @prop()
   readonly id: bigint | string;
 
-  public model(): ModelType<Restaurant> {
-    return new Restaurant().getModelForClass(Restaurant, { schemaOptions });
+  public model() {
+    return getModelForClass(Restaurant);
   }
 }

@@ -1,12 +1,11 @@
 import { injectable } from 'inversify';
 import 'reflect-metadata';
 import { IDbContext } from './Interfaces/db.context.interface';
-import { Typegoose } from 'typegoose';
 import { IBaseRepository } from './Interfaces/base.interface.repository';
 
 @injectable()
-export abstract class BaseRepository<T> implements IBaseRepository<T> {
-  private readonly context: IDbContext<Typegoose>;
+export class BaseRepository<T> implements IBaseRepository<T> {
+  private readonly context: IDbContext<T>;
 
   find(item: T): Promise<T[]> {
     throw new Error('Method not implemented.');

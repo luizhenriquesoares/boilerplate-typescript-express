@@ -1,10 +1,8 @@
-import { ModelType } from 'typegoose';
-
 export interface IDbContext<T> {
-  setContext(context: ModelType<T>): void;
-  find(item: ModelType<T>): Promise<ModelType<T>[]>;
+  setContext(context: T): void;
+  find(item: T): Promise<T[]>;
   findOne();
-  create(item: ModelType<T>): Promise<boolean>;
-  update(id: bigint, item: ModelType<T>): Promise<ModelType<T>>;
+  create(item: T): Promise<boolean>;
+  update(id: bigint, item: T): Promise<T>;
   delete(id: bigint): Promise<boolean>;
 }
